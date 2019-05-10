@@ -1,4 +1,5 @@
 {
-    "editor.renderWhitespace": "boundary",
-    "editor.formatOnSave": true
+  "editor.renderWhitespace": "boundary",
+  "editor.formatOnSave": true,
+  "javascript.validate.enable": false
 }
