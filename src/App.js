@@ -1,16 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import SearchPanel from "./SearchPanel";
+import ResultPanel from "./ResultPanel";
 
-const App = props => {
+const App = ({ pokemon }) => {
   return (
     <div className="app">
       <h1>Pok&eacute;dex</h1>
+      <SearchPanel />
+      <ResultPanel pokemon={pokemon} />
     </div>
   );
 };
 
 App.propTypes = {
-  data: PropTypes.object
+  pokemon: PropTypes.array
 };
 
 export default App;

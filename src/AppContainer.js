@@ -10,7 +10,7 @@ class AppContainer extends Component {
     super();
 
     this.state = {
-      data: null,
+      pokemon: [],
       nameFilter: "",
       typeFilter: "",
       weaknessFilter: "",
@@ -22,14 +22,19 @@ class AppContainer extends Component {
   componentDidMount = async () => {
     try {
       const result = await axios.get(API_URL);
-      this.setState({ data: result.data, isLoading: false });
+      this.setState({
+        pokemon: result && result.data && result.data.pokemon,
+        isLoading: false
+      });
     } catch (error) {
       this.setState({ isLoading: false, error });
     }
   };
 
   render() {
-    return <App data={this.state.data} />;
+    console.log(this.state.pokemon);
+
+    return <App pokemon={this.state.pokemon} />;
   }
 }
 
