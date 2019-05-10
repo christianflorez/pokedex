@@ -4,16 +4,19 @@ import Card from "react-bootstrap/Card";
 
 const renderCards = allPokemon => {
   return allPokemon.map(pokemon => (
-    <Card style={{ width: "18rem" }}>
+    <Card key={pokemon.id}>
       <Card.Img variant="top" src={pokemon.img} />
       <Card.Body>
         <Card.Title>
-          {pokemon.id}. {pokemon.name}
+          {pokemon.num}. {pokemon.name}
         </Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
+
+        <p>
+          <strong>Type:</strong> {pokemon.type.join(", ")}
+        </p>
+        <p>
+          <strong>Weaknesses:</strong> {pokemon.weaknesses.join(", ")}
+        </p>
       </Card.Body>
     </Card>
   ));
@@ -21,11 +24,16 @@ const renderCards = allPokemon => {
 
 const ResultPanel = ({ pokemon }) => {
   const cards = renderCards(pokemon);
-  return <div className="result-panel">{cards}</div>;
+  return (
+    <div className="result-panel">
+      <h2>Results:</h2>
+      <div className="results">{cards}</div>
+    </div>
+  );
 };
 
 ResultPanel.propTypes = {
-  pokemon: PropTypes.object
+  pokemon: PropTypes.array
 };
 
 export default ResultPanel;

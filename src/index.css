@@ -2,11 +2,32 @@
   padding: 0 10%;
 }
 
-.result-panel {
+.result-panel h2 {
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+.result-panel .results {
   display: flex;
   flex-flow: row wrap;
+  font-family: "Press Start 2P", cursive;
+  justify-content: space-around;
 }
 
 .result-panel .card {
+  width: 30%;
   margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.result-panel .card-title {
+  border-bottom: solid 1px black;
+}
+
+.result-panel .card img {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border: solid 2px black;
+  border-radius: 5px;
+  margin-top: 10px;
 }

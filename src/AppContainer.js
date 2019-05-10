@@ -31,10 +31,43 @@ class AppContainer extends Component {
     }
   };
 
-  render() {
-    console.log(this.state.pokemon);
+  onNameChange = e => {
+    const nameFilter = e.target.value;
+    this.setState({ nameFilter });
+  };
 
-    return <App pokemon={this.state.pokemon} />;
+  onTypeChange = e => {
+    const typeFilter = e.target.value;
+    this.setState({ typeFilter });
+  };
+
+  onWeaknessChange = e => {
+    const weaknessFilter = e.target.value;
+    this.setState({ weaknessFilter });
+  };
+
+  filterPokemonData = () => {
+    let allPokemon = this.state.pokemon;
+    return allPokemon.filter(pokemon => {
+      const isNameInSearch = pokemon.name
+        .toLowerCase()
+        .includes(this.state.nameFilter.toLowerCase());
+
+      return isNameInSearch;
+    });
+  };
+
+  render() {
+    const pokemon = this.filterPokemonData();
+
+    return (
+      <App
+        pokemon={pokemon}
+        onNameChange={this.onNameChange}
+        onTypeChange={this.onTypeChange}
+        onWeaknessChange={this.onWeaknessChange}
+      />
+    );
   }
 }
 

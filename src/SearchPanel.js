@@ -2,13 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
 
-const SearchPanel = props => {
+const SearchPanel = ({ onNameChange, onTypeChange, onWeaknessChange }) => {
   return (
     <div className="search-panel">
       <Form>
         <Form.Group controlId="name">
           <Form.Label>Name</Form.Label>
           <Form.Control
+            onChange={onNameChange}
             type="text"
             placeholder="Example: Bulbasaur, Charizard, etc..."
           />
@@ -29,6 +30,10 @@ const SearchPanel = props => {
   );
 };
 
-SearchPanel.propTypes = {};
+SearchPanel.propTypes = {
+  onNameChange: PropTypes.func.isRequired,
+  onTypeChange: PropTypes.func.isRequired,
+  onWeaknessChange: PropTypes.func.isRequired
+};
 
 export default SearchPanel;
