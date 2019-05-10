@@ -17,13 +17,18 @@ const SearchPanel = ({ onNameChange, onTypeChange, onWeaknessChange }) => {
         <Form.Group controlId="type">
           <Form.Label>Type</Form.Label>
           <Form.Control
+            onChange={onTypeChange}
             type="type"
             placeholder="Example: Grass, Poison, etc..."
           />
         </Form.Group>
         <Form.Group controlId="weakness">
           <Form.Label>Weakness</Form.Label>
-          <Form.Control type="text" placeholder="Example: Fire, Ice, etc..." />
+          <Form.Control
+            onChange={onWeaknessChange}
+            type="text"
+            placeholder="Example: Fire, Ice, etc..."
+          />
         </Form.Group>
       </Form>
     </div>

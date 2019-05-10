@@ -53,7 +53,17 @@ class AppContainer extends Component {
         .toLowerCase()
         .includes(this.state.nameFilter.toLowerCase());
 
-      return isNameInSearch;
+      const isTypeInSearch = pokemon.type.some(el => {
+        return el.toLowerCase().includes(this.state.typeFilter.toLowerCase());
+      });
+
+      const isWeaknessInSearch = pokemon.weaknesses.some(el => {
+        return el
+          .toLowerCase()
+          .includes(this.state.weaknessFilter.toLowerCase());
+      });
+
+      return isNameInSearch && isTypeInSearch && isWeaknessInSearch;
     });
   };
 
