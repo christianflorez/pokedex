@@ -1,29 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 const renderCards = allPokemon => {
   return allPokemon.map(pokemon => (
     <Card key={pokemon.id}>
-      <Card.Img variant="top" src={pokemon.img} />
-      <Card.Body>
-        <Card.Title>
-          {pokemon.num}. {pokemon.name}
-        </Card.Title>
+      <Link to={`/pokemon/${pokemon.id}`}>
+        <Card.Img variant="top" src={pokemon.img} />
+        <Card.Body>
+          <Card.Title>
+            {pokemon.num}. {pokemon.name}
+          </Card.Title>
 
-        <p>
-          <strong>Type:</strong> {pokemon.type.join(", ")}
-        </p>
-        <p>
-          <strong>Weaknesses:</strong> {pokemon.weaknesses.join(", ")}
-        </p>
-      </Card.Body>
+          <p>
+            <strong>Type:</strong> {pokemon.type.join(", ")}
+          </p>
+          <p>
+            <strong>Weaknesses:</strong> {pokemon.weaknesses.join(", ")}
+          </p>
+        </Card.Body>
+      </Link>
     </Card>
   ));
 };
 
-const ResultPanel = ({ pokemon }) => {
-  const cards = renderCards(pokemon);
+const ResultPanel = ({ filteredPokemon }) => {
+  const cards = renderCards(filteredPokemon);
   return (
     <div className="result-panel">
       <h2>Results:</h2>
@@ -33,7 +36,7 @@ const ResultPanel = ({ pokemon }) => {
 };
 
 ResultPanel.propTypes = {
-  pokemon: PropTypes.array
+  filteredPokemon: PropTypes.array
 };
 
 export default ResultPanel;

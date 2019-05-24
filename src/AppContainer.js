@@ -68,11 +68,12 @@ class AppContainer extends Component {
   };
 
   render() {
-    const pokemon = this.filterPokemonData();
+    const filteredPokemon = this.filterPokemonData();
 
     return (
       <App
-        pokemon={pokemon}
+        allPokemon={this.state.pokemon}
+        filteredPokemon={filteredPokemon}
         onNameChange={this.onNameChange}
         onTypeChange={this.onTypeChange}
         onWeaknessChange={this.onWeaknessChange}
